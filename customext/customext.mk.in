@@ -1,0 +1,14 @@
+customext_subproject_deps = \
+	spike_main \
+	riscv \
+	disasm \
+	softfloat \
+
+customext_srcs = \
+	fiona.cc \
+	activation.cc \
+
+customext_install_shared_lib = yes
+
+customext_CFLAGS = -I/usr/include/eigen3 $(shell python3-config --cflags --embed) -I$(FIONA_PHOTONIC_DIR)/bridge/ -I$(FIONA_PHOTONIC_DIR)/bridge/spike
+customext_LDFLAGS = $(shell python3-config --ldflags --embed) -Xlinker -export-dynamic
